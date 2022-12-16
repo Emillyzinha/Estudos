@@ -1,0 +1,39 @@
+
+class Conta:
+    def __init__(self, numero, titular, saldo, limite):
+        self.__numero = numero
+        self.__titular = titular
+        self.__saldo = saldo
+        self.__limite = limite
+
+    def extrato(self):
+        print(f'Saldo de {self.__saldo} do titular {self.__titular}')
+
+    def saca(self, valor):
+        self.__saldo-=valor
+
+    def deposita(self, valor):
+        self.__saldo+=valor
+
+    def transfere(self, valor, destino):
+        self.saca(valor) #SELF = conta que vai transferir. Serve tanto para chamar o método quanto para acessar um atributo elegível
+        destino.deposita(valor)
+
+    def eh_inadiplente(self, cliente):
+        # a conta não é inadiplente, uma PESSOA sim. Está usando de uma classe exterior. É possível perceber isso porque nenhuma funcionalidade desse método estaria usando o atribulo da classe Conta. Se perguntar se esse é método é nessa classe.
+
+        # A CLASSE DEVE TER UMA ÚNICA RESPONSABILIDADE, UMA ÚNICA FUNÇÃO PARA MUDAR, COM ESSE MÉTODO A CLASSE TERIA DUAS FUNÇÕES
+        pass
+
+# conta = Conta(123, "Nico", 55.5, 1000.0)
+# conta2 = Conta(321, "Marco", 100.0, 1000.0)
+
+class Retangulo:
+
+    def __init__(self, x, y):
+        self.__x = x
+        self.__y = y
+        self.__area = x * y
+
+    def obter_area(self):
+        return self.__area
